@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "GEE Book",
+    "section": "",
+    "text": "El presente Libro pretende abordar procesos de análisis espacial ambiental mediante la Percepción Remota, utilizando la plataforma de Google Earth Engine, a través del lenguaje de programación R Project.\n\nDefinción Generales\n\nPercepción Remota\nProductos Satelitales\nGEE\nR\n\nIndices\nMachine Learning\n\nClasificación No Supervisada\nClasificación Supervisada\n\nDeep Learnig"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introducción",
+    "section": "",
+    "text": "Centro de Inteligencia Territorial"
+  },
+  {
+    "objectID": "definiciones.html",
+    "href": "definiciones.html",
+    "title": "2  Definiciones Generales",
+    "section": "",
+    "text": "Percepción Remota o en una disciplina científica que entrega un amplio conjunto de conocimientos y tecnologías utilizadas para observación, análisis, la interpretación de fenómenos en el territorio.\nLa percepción remota nos permite efectuar observaciones y mediciones de la superficie terrestre mediante dispositivos remotos instalados sobre plataformas como satélites, aviones y actualmente hasta en drones.\nAplicaciones:\n\nBosque Nativo: Superficie anual, Vigor vegetacional y superficie incendiada\nGlaciares: Superficie de cuerpos glaciares\nAmbiente urbano: Superficie anual cubierta con vegetación por manzana urbana\nAmbiente marino costero: Calidad anual del agua superficial del mar\nHumedales Alto Andino: Superficie anual vegetada e inundada en el humedal\n\n\n\nLos satélites llevan instrumentos o sensores que miden la radiación electromagnética proveniente del sistema tierra - atmósfera. La intensidad de la radiación reflejada y emitida al espacio es influenciada por las condiciones en la superficie y la atmósfera.\nLos sensores instalados en estas plataformas miden una gran variedad de datos como radiaciones electromagnéticas, espectro electromagnético, perturbaciones atmosféricas, firmas espectrales y captura de imágenes, entre otros.\n\n\n\nSatelites en orbita"
+  },
+  {
+    "objectID": "definiciones.html#gee_def",
+    "href": "definiciones.html#gee_def",
+    "title": "2  Definiciones Generales",
+    "section": "2.2 Google Earth Engine (GEE)",
+    "text": "2.2 Google Earth Engine (GEE)"
+  },
+  {
+    "objectID": "ndvi.html",
+    "href": "ndvi.html",
+    "title": "3  NDVI",
+    "section": "",
+    "text": "esta es la formula (Equation 3.1)"
+  },
+  {
+    "objectID": "ndvi.html#fórmula",
+    "href": "ndvi.html#fórmula",
+    "title": "3  NDVI",
+    "section": "3.2 Fórmula",
+    "text": "3.2 Fórmula\n\nNDVI=\\frac{NIR-RED}{NIR+RED}\n\\tag{3.1}\n\nNIR: luz reflejada en el espectro del infrarrojo cercano\nRED: luz reflejada en el rango rojo del espectro"
+  },
+  {
+    "objectID": "ndvi.html#objetivos",
+    "href": "ndvi.html#objetivos",
+    "title": "3  NDVI",
+    "section": "3.3 Objetivos",
+    "text": "3.3 Objetivos"
+  },
+  {
+    "objectID": "ndvi.html#metodología",
+    "href": "ndvi.html#metodología",
+    "title": "3  NDVI",
+    "section": "3.4 Metodología",
+    "text": "3.4 Metodología"
+  },
+  {
+    "objectID": "ndvi.html#producto-satelital",
+    "href": "ndvi.html#producto-satelital",
+    "title": "3  NDVI",
+    "section": "3.5 Producto Satelital",
+    "text": "3.5 Producto Satelital"
+  },
+  {
+    "objectID": "ndvi.html#cálculo",
+    "href": "ndvi.html#cálculo",
+    "title": "3  NDVI",
+    "section": "3.6 Cálculo",
+    "text": "3.6 Cálculo\n\nlibrary(mapview)\nlibrary(tidyverse)\nlibrary(sf)\nlibrary(raster)\nlibrary(rgee)\nee_Initialize()\n\n── rgee 1.1.5 ─────────────────────────────────────── earthengine-api 0.1.317 ── \n ✔ user: not_defined\n ✔ Initializing Google Earth Engine:\n ✔ Initializing Google Earth Engine:  DONE!\n\n ✔ Earth Engine account: users/denisberroeta \n────────────────────────────────────────────────────────────────────────────────"
+  },
+  {
+    "objectID": "ndvi.html#referencias",
+    "href": "ndvi.html#referencias",
+    "title": "3  NDVI",
+    "section": "3.7 Referencias",
+    "text": "3.7 Referencias\n\n\n\n\n\nNDVI en la comuna de Las Condes, Chile"
+  },
+  {
+    "objectID": "night_lights.html#objetivos",
+    "href": "night_lights.html#objetivos",
+    "title": "4  Luces Nocturnas con GEE",
+    "section": "4.1 Objetivos",
+    "text": "4.1 Objetivos\nConstruir un indicador territorial que represente la luminosidad nocturna, cuya unidad mínima sea manzana urbana y entidad rural, a nivel país que se denominará “Indicador de Iluminosidad Nocturna (ILN)."
+  },
+  {
+    "objectID": "night_lights.html#metodología",
+    "href": "night_lights.html#metodología",
+    "title": "4  Luces Nocturnas con GEE",
+    "section": "4.2 Metodología",
+    "text": "4.2 Metodología\nDe forma general se utilizará como base producto satelital llamado VIIRS Stray Light Corrected Nighttime Day/Night Band Composites Version 1, que entrega valores de radiancia media mensual del infrarojo visible, utilizando la plataflorma de GEE para su adquisisción y procesamiento.\nSe definirá una región de estudio, paral el caso práctico de cálculo es la área urbana de las comunas de Valparaíso y Viña del Mar en la V Región, se le aplicará un buffer de 1000 metros y se cortará imagen tipo raster obtendida del producto satelital antes mecionado.\nFinalmente se procederá extraer el valor de indicador por unidad territorial mínima, manzana urbana y entidad censal, mediante el cáculo del promedio de los valores de pixeles que contiene en su interior, y este valor será el del indicador ILN. Para tener control de flujo de este proceso se rezarará mediante un ciclo interativo por Distrito censal, en caso de caerse la conexión con GEE, se puede continuar en el distrito correcto, sin perder lo avanzado."
+  },
+  {
+    "objectID": "night_lights.html#producto-satelital",
+    "href": "night_lights.html#producto-satelital",
+    "title": "4  Luces Nocturnas con GEE",
+    "section": "4.3 Producto Satelital",
+    "text": "4.3 Producto Satelital\n\nNombre:\n\nVIIRS Stray Light Corrected Nighttime Day/Night Band Composites Version 1\n\nDescripción:\n\nImágenes compuestas de radiancia media mensual utilizando datos nocturnos del Visible Infrared Imaging Radiometer Suite (VIIRS) Day/Night Band (DNB).\nComo estos datos se componen mensualmente, hay muchas zonas del planeta en las que es imposible obtener una cobertura de datos de buena calidad para ese mes. Esto puede deberse a la nubosidad, especialmente en las regiones tropicales, o a la iluminación solar, como ocurre hacia los polos en sus respectivos meses de verano. Por lo tanto, se recomienda que los usuarios de estos datos utilicen la banda ‘cf_cvg’ y no asuman que un valor de cero en la imagen de radiancia media significa que no se observaron luces.\nLa cobertura de nubes se determina utilizando el producto VIIRS Cloud Mask (VCM). Además, los datos cercanos a los bordes de la franja no se incluyen en los compuestos (zonas de agregación 29-32). La versión 1 NO ha sido filtrada para separar las luces de la aurora, los incendios, los barcos y otras luces temporales. Esta separación está en desarrollo y se incluirá en una versión posterior de esta serie temporal. También está en desarrollo un método para separar las luces de los valores de fondo (no luces).\nEste producto es una configuración alternativa del DNB de VIIRS que utiliza un procedimiento para corregir la luz parásita. El procedimiento de corrección extiende las áreas visibles más cerca de los polos y mejora el rango dinámico. Hay que tener en cuenta que se introducen algunos artefactos debido al procedimiento utilizado en las regiones crepusculares; véase el documento de referencia para más detalles. Este producto excluye los datos afectados por la nubosidad.\n\nBandas:\n\nResolution: 463.83 meters\n\n\n\n\nInformación de Producto Satelital\n \n  \n    Name \n    Units \n    Min \n    Max \n    Description \n  \n \n\n  \n    avg_rad \n    nanoWatts/cm2/sr \n    -1.5* \n    193565* \n    Average DNB radiance values. \n  \n  \n    cf_cvg \n    NA \n    0* \n    84* \n    Cloud-free coverages; the total number of observations that went into each pixel. This band can be used to identify areas with low numbers of observations where the quality is reduced. \n  \n\n\n\n\n\n\n\n\nEstimated min or max value"
+  },
+  {
+    "objectID": "night_lights.html#cálculo",
+    "href": "night_lights.html#cálculo",
+    "title": "4  Luces Nocturnas con GEE",
+    "section": "4.4 Cálculo",
+    "text": "4.4 Cálculo\nA continuación se define el flujo de trabajo para calcular el indicador de ILN.\n\n4.4.1 Cargar Librerías\n\nlibrary(dplyr)\nlibrary(sf)\nlibrary(mapview)\nlibrary(ggplot2)\nlibrary(viridis)\nlibrary(rgee)\nee_Initialize()\n\n── rgee 1.1.5 ─────────────────────────────────────── earthengine-api 0.1.317 ── \n ✔ user: not_defined\n ✔ Initializing Google Earth Engine:\n ✔ Initializing Google Earth Engine:  DONE!\n\n ✔ Earth Engine account: users/denisberroeta \n──────────────────────────────────────────────────────────────────────────────── \n\n\n\n\n4.4.2 Definición de Área de Estudio\nPara este ejemplo se definirá como área de estudio las zonas urbanas del gran Valparaíso. Para esto tenemos un archivo tipo llamado Zonas_Censales_2017_Nacional.rds tipo polígonos espaciales, que corresponden a zonas censales (INE) que son urbanas únicamente. Estas geometrías se utilizarán únicamente para definir la región de estudio.\n\nzonas_ine <- readRDS(\"data/rds/Zonas_Censales_2017_Nacional.rds\")\n\nA continuación utilizaremos las zonas censales, para definir una región de estudio general, filtrando las comuna de nuestro interés en este caso las comunas de Valparaíso y Viña del Mar.Debemos tener especial cuidado en el Sistema de Referencias de Coordenadas (CRS), ya que necesitamos que en coordenadas geográfica EPSG(4326), si está en algún otro CRS, se puede transformar utilizando la función st_transform(). Posterriormente se ibuja una geometría única que toma solamente el contorno de las zonas censales filtradas utilizando la función st_union. Finalmente a esta geometría única se le aplicarà un buffer (st_buffer()) de 1000 metros, a fin de asegurarnos que no queden partes de polígonos sin curbrir con el raster.\n\nae <- zonas_ine %>%\n  st_as_sf() %>%\n  filter(NOM_COMUNA %in% c(\"VALPARAÍSO\", \"VIÑA DEL MAR\")) %>%\n  st_transform(4326) %>%\n  st_union() %>%\n  st_buffer(1000)\n\n\n\n\nA continuación se visualiza el área de\n\nmapview(ae)\n\n\n\n\n\n\nae_ee <- ae %>% sf_as_ee()\n\n\n\n4.4.3 Lectura de Producto Satelital\n\ndataset <-  ee$ImageCollection('NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG')$\n  filterDate('2020-01-01', '2020-12-01')$\n  select(\"avg_rad\")$\n  median()\n\nimagen <- dataset$clip(ae_ee)\n\n\nvis <- list(min = 0, max = 60,\n            palette = c('0602ff', '235cb1', '307ef3', '269db1', '30c8e2',\n                        '32d3ef', '3ae237','b5e22e', 'd6e21f', 'fff705',\n                        'ffd611', 'ffb613', 'ff8b13', 'ff6e08', 'ff500d',\n                        'ff0000', 'de0101', 'c21301'))\n\n\nregion <- ae_ee$bounds()\n\nVisualización del producto satelital\n\nMap$centerObject(region, zoom = 11)\nMap$addLayer(imagen, vis, name = \"Nighttime\")\n\n\n\n\n\n\n\n4.4.4 Cálculo de Indicador\n\nvalpo_mz <- readRDS(\"data/rds/gran_valparaiso_mz.rds\")\n# mapview(valpo_mz, zcol = \"PERSONAS\")\n\nEs un proceso costoso computacionalmente, lo que toma un tiempo cercano a 3 minutos, es recomendable iterar por Distrito Censalcon objetivo si se cae la conexión con GEE en medio del cálculo, podriamos recomenzar eventualmente en el distrito censal donde se paro la instrucción.\n\nmz_lum <- NULL\nfor(distrito in unique(valpo_mz$DISTRITO)){\n  print(paste0(\"Procesando el Distrito de \", distrito))\n  mz_filtrada <- valpo_mz %>%\n    filter(DISTRITO ==distrito)\n  mz_luminocidad <- ee_extract(x = imagen, y = mz_filtrada,\n                               sf = T,scale = 500,\n                               fun =ee$Reducer$mean())\n  mz_lum <- rbind(mz_lum, mz_luminocidad)\n}\n\nGuardar los resultados del objeto espacial generado en formato rds\n\nsaveRDS(mz_lum, \"data/rds/luces_noc_gran_valpo.rds\")\n\n\n\n\n\n# mapview::mapview(mz_lum, zcol = \"avg_rad\")\n\n# vislauzación cartografica\nind_LN <- ggplot() + \n  geom_sf(data = mz_lum, aes(fill = avg_rad), color=NA) + \n  scale_fill_viridis()+ theme_bw()+\n  # xlab( \"longitud\") + ylab(\"latitud\")+\n  labs(title = \"ILN: Indicador de Luces Nocturnas\", \n       subtitle = \"Utilizando Google Earth Engine\",\n       fill = \"ILN\")+\n  theme(panel.grid.major = element_line(colour = \"gray94\"), \n      panel.grid.minor = element_line(colour = \"gray94\"), \n      plot.title = element_text(hjust = 0.5, size = rel(0.9)), \n      plot.subtitle = element_text(hjust = 0.5, size = rel(0.7)),\n      legend.title = element_text(size = rel(0.7)),\n      panel.background = element_rect(fill = \"gray100\"),\n      axis.text.x = element_text(color = \"grey20\", size = rel(0.7)),\n      axis.text.y = element_text(color = \"grey20\", size = rel(0.7))) \nind_LN"
+  },
+  {
+    "objectID": "night_lights.html#referencias",
+    "href": "night_lights.html#referencias",
+    "title": "4  Luces Nocturnas con GEE",
+    "section": "4.5 Referencias",
+    "text": "4.5 Referencias"
+  },
+  {
+    "objectID": "machine_learning.html",
+    "href": "machine_learning.html",
+    "title": "5  Machine Learning",
+    "section": "",
+    "text": "Vegentación Urbana https://www.mdpi.com/2072-4292/12/12/1952/htm"
+  }
+]
